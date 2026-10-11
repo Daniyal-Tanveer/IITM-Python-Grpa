@@ -11,21 +11,36 @@ Note: Finding the tenth_month will be a bit of challange. If you are stuck open 
 
 # Sample inputs (# note: The values given in the prefix code(grey) will be changed by the autograder according to the testcase while running them.
 
-s = "hello pyhton"
-course_code = "24t2cs1002" # 24 - year, t2 - term 2, cs1002 - course id
-# <eoi>
+# 1. Read age as an integer
+age = int(input()) 
 
-output1 = s[2] # str: get the third character of s
+# 2. Read date of birth (dob) as a string
+dob = input() 
 
-output2 = s[-4] # str: get the fourth last character of s
+# 3. Split dob by '/' and convert each part into an integer
+day, month, year = map(int, dob.split('/')) 
 
-output3 = s[:3] # str: get the first 3 characters of s
+# 4. Calculate fifth birthday by adding 5 to the birth year
+fifth_birthday = f"{day}/{month}/{year + 5}" 
 
-output4 = s[::2] # str: get every second character of s
+# 5. Calculate last birthday by adding current age to the birth year
+last_birthday = f"{day}/{month}/{year + age}" 
 
-output5 = s[-3:] # str: get the last 3 characters of s
+# 6. Calculate the date exactly 10 months after birth
+new_month = (month + 10 - 1) % 12 + 1
+new_year = year + (month + 10 - 1) // 12
+tenth_month = f"{day}/{new_month}/{new_year}" 
 
-output6 = s[::-1]  # str: get the reverse of s
+# 7. Print the three calculated dates separated by a comma and a space
+print(tenth_month, fifth_birthday, last_birthday, sep=", ")
 
-course_term = int(course_code[3]) # int: get the term of the year as number from course_code
-course_year = int(course_code[0 :2]) # int: get the year as two digit number from course_code
+# 8. Read weight as a float
+weight = float(input()) 
+
+# 9. Separate the integer part (kg) and fractional part (grams)
+kg = int(weight)
+grams = int(round((weight - kg) * 1000))
+weight_readable = f"{kg} kg {grams} grams" 
+
+# 10. Print the human-readable weight string
+print(weight_readable)
